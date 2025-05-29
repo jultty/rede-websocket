@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Teste WebSocket</title>
+    </head>
+    <body>
+        <h2>Envie uma mensagem:</h2>
+        <input id="userName" placeholder="Nome">
+        <input id="msgInput" placeholder="Mensagem">
+        <button onclick="enviar()">Enviar</button>
+        <h3>Mensagens recebidas:</h3>
+        <ul id="mensagens"></ul>
+        <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+        <script>
+            const socket = io();
+            socket.on('message', (msg) => {
+                const li = document.createElement('li');
+                li.innerText = "<" + msg.user + "> " + msg.message;
+                document.getElementById('mensagens').appendChild(li);
+            });
+            function enviar() {
+                const user = document.getElementById('userName').value;
+                const msg = document.getElementById('msgInput').value;
+                socket.send({ "user": user, "message": msg });
+                document.getElementById('msgInput').value = '';
+            }
+            // Permite testar via console
+            window.socket = socket;
+        </script>
+    </body>
+</html>
