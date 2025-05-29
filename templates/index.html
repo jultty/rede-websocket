@@ -7,26 +7,48 @@
     <body>
         <h2>Envie uma mensagem:</h2>
         <input id="userName" placeholder="Nome">
-        <input id="msgInput" placeholder="Mensagem">
-        <button onclick="enviar()">Enviar</button>
+        <input id="msgInput" placeholder="Mensagem" disabled>
+        <button id="sendButton" onclick="enviar()" disabled>Enviar</button>
         <h3>Mensagens recebidas:</h3>
         <ul id="mensagens"></ul>
         <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
         <script>
+
+            const username_input = document.getElementById("userName");
+            const message_input = document.getElementById("msgInput");
+            const send_button = document.getElementById("sendButton");
+
+            username_input.addEventListener("input", userNameUpdate);
+
+            function userNameUpdate(event) {
+                if (event.target.value != "") {
+                    console.log("username is not empty")
+                    message_input.disabled = false;
+                    send_button.disabled = false;
+                } else {
+                    console.log("username is empty")
+                    message_input.disabled = true;
+                    send_button.disabled = true;
+                }
+            }
+
             const socket = io();
             socket.on('message', (msg) => {
                 const li = document.createElement('li');
                 li.innerText = "<" + msg.user + "> " + msg.message;
                 document.getElementById('mensagens').appendChild(li);
             });
+
             function enviar() {
                 const user = document.getElementById('userName').value;
                 const msg = document.getElementById('msgInput').value;
                 socket.send({ "user": user, "message": msg });
                 document.getElementById('msgInput').value = '';
             }
+
             // Permite testar via console
             window.socket = socket;
+
         </script>
     </body>
 </html>
