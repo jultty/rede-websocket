@@ -36,6 +36,15 @@
             socket.on('message', (msg) => {
                 const li = document.createElement('li');
                 li.innerText = "<" + msg.user + "> " + msg.message;
+
+                if (msg.user == username_input.value) {
+                    console.log("message is local")
+                    li.classList.add("user-message")
+                } else {
+                    console.log("message is remote")
+                    li.classList.add("other-message")
+                }
+
                 document.getElementById('mensagens').appendChild(li);
             });
 
