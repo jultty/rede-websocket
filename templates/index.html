@@ -35,7 +35,13 @@
             const socket = io();
             socket.on('message', (msg) => {
                 const li = document.createElement('li');
-                li.innerText = "<" + msg.user + "> " + msg.message;
+                const date_options = {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                };
+                const hora = new Date().toLocaleTimeString("pt-BR", date_options);
+                li.innerText = "[" + hora + "] " + msg.user + ": " + msg.message;
 
                 if (msg.user == username_input.value) {
                     console.log("message is local")
