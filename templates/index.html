@@ -42,7 +42,9 @@
             function enviar() {
                 const user = document.getElementById('userName').value;
                 const msg = document.getElementById('msgInput').value;
-                socket.send({ "user": user, "message": msg });
+                if (msg != "") {
+                    socket.send({ "user": user, "message": msg });
+                }
                 document.getElementById('msgInput').value = '';
             }
 
