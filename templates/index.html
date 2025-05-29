@@ -6,14 +6,12 @@
         <title>Teste WebSocket</title>
     </head>
     <body>
-        <h2>Envie uma mensagem:</h2>
         <input id="userName" placeholder="Nome">
         <input id="msgInput" placeholder="Mensagem" disabled>
         <button id="sendButton" onclick="enviar()" disabled>Enviar</button>
-        <h3>Mensagens recebidas:</h3>
         <ul id="mensagens"></ul>
         <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="static/style.css">
         <script>
 
             const username_input = document.getElementById("userName");
