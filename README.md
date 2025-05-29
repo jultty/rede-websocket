@@ -6,11 +6,11 @@
 
 ## Requisitos
 
-- [ ] Solicitar ao usuário que informe seu nome antes de iniciar o envio de mensagens
+- [x] Solicitar ao usuário que informe seu nome antes de iniciar o envio de mensagens
 - [x] Exibir mensagens imediatamente para todos os usuários conectados, sem recarregar a página
-- [ ] Exibir as mensagens do próprio usuário alinhadas à direita, com destaque visual (ex: fundo azul)
-- [ ] Exibir as mensagens dos demais usuários alinhados à esquerda, com o nome do remetente visível
-- [ ] Ter uma interface responsiva, adaptando-se bem a telas de dispositivos móveis (smartphones e tablets)
+- [x] Exibir as mensagens do próprio usuário alinhadas à direita, com destaque visual (ex: fundo azul)
+- [x] Exibir as mensagens dos demais usuários alinhados à esquerda, com o nome do remetente visível
+- [x] Ter uma interface responsiva, adaptando-se bem a telas de dispositivos móveis (smartphones e tablets)
 - [x] Ser acessível por meio do endereço IP local da máquina onde o servidor estiver rodando
 - [x] Permitir que o professor acesse e utilize o chat a partir do próprio smartphone
 
